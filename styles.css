@@ -1,0 +1,22 @@
+.game-container {
+    display: inline-block;
+    border: 1px solid black;
+    padding: .5rem;
+}
+
+.display {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    gap: .5rem;
+}
+
+.screen {
+    border: 1px solid black;
+    flex-grow: 1;
+}
+
+.game-options {
+    display: flex;
+    gap: 1rem;
+}
