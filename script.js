@@ -1,17 +1,13 @@
-// definir variables esenciales para la inicializacion del juego
+// crear objetos con información relacionada a cada jugador
+const first_player = { screen: document.querySelector(".first-player"), choice: null, shift: false, score: 0 }
+const second_player = { screen: document.querySelector(".second-player"), choice: null, shift: false, score: 0 }
+
+let current_user = first_player;
+
+// datos generales del juego
+
 const parser = new DOMParser();
 const game_options = document.querySelectorAll(".option");
-const screen = {
-    user: document.querySelector(".first-player"),
-    computer: document.querySelector(".second-player")
-}
-let shift = false;
-
-// asociar los turnos con las pantallas
-const currentScreen = (shift) => {
-    if (!shift) return screen.user;
-    return screen.computer;
-}
 
 //iconos del juego como valores para setearlo al html
 const VALUES = [
@@ -24,21 +20,37 @@ const VALUES = [
 // añadir listeners a los botones de la UI y relacionarlo con el html
 game_options.forEach((option) => {
     option.addEventListener("click", (event) => {
-        const choice = event.target.dataset.option;
-        let display = currentScreen(shift);
-        checkScreen(display);
-        display.appendChild(showIcon(choice).icon.cloneNode(true));
-        shift = !shift;
-        console.log(shift, display);
+
+        // actualizar los datos del jugador actual
+        const value = event.target.dataset.option;
+
+        current_user.choice = choice(Number(value));
+        current_user.shift = true;
+        checkScreen(current_user.screen);
+        current_user.screen.appendChild(showIcon(value).icon.cloneNode(true));
+
+        // alternar el puntero current_user
+        current_user = current_user === first_player ? second_player : first_player;
+
+        // verificar el ganador cuando ambos objetos hayan jugado su turno
+        if (first_player.shift && second_player.shift) {
+            checkWinner(first_player.choice, second_player.choice);
+            const players = [first_player, second_player];
+            players.forEach((player) => resetPlayersInformation(player));
+        }
     })
 })
+
+function resetPlayersInformation(player) {
+    player.choice = null
+    player.shift = false
+}
 
 function showIcon(choice) {
     return VALUES.find(option => option.value.toString() === choice);
 }
 
 function checkScreen(screen) {
-
     if (screen.hasChildNodes()) {
         screen.innerHTML = "";
     }
@@ -72,23 +84,20 @@ function playRound(human_choice, computer_choice) {
     return 'computer'; // ningun escenario posible donde el humano pudo ganar se cumplio
 }
 
-
 // determinar el ganador de la ronda
-function checkWinner(human_choice, computer_choice, human_score, computer_score) {
-    const result = playRound(human_choice, computer_choice);
-    console.log(result);
+function checkWinner(first_player_choice, second_player_choice) {
+    console.log(first_player_choice, second_player_choice);
+    const result = playRound(first_player_choice, second_player_choice);
 
     if (result === "human") {
-        console.log("Humano gana la ronda");
-        human_score += 1;
+        console.log("first player gana la ronda");
+        first_player.score += 1;
     } else if (result === "computer") {
-        console.log("Computadora gana la ronda");
-        computer_score += 1;
+        console.log("second player gana la ronda");
+        second_player.score += 1;
     } else {
         console.log("Empate Tecnico");
     }
-
-    return [human_score, computer_score];
 }
 
 function checkScore(human_score, computer_score) {
