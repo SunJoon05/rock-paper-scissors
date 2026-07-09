@@ -1,22 +1,103 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    block-size: 100vh;
+    font-family: 'Montserrat';
+}
+
 .game-container {
-    display: inline-block;
-    border: 1px solid black;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: .5rem;
+    gap: 2rem;
+    border-radius: .5rem;
+    background-color: rgb(28, 52, 190);
+    inline-size: 20rem;
+    block-size: 20rem;
 }
 
 .display {
-    border: 1px solid black;
     display: flex;
-    justify-content: space-between;
     gap: .5rem;
+    background: white;
+    padding: .5rem;
+    border-radius: .6rem;
+    flex-grow: 1;
 }
 
 .screen {
-    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: .5rem;
     flex-grow: 1;
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen.first-player,
+.screen.second-player {
+    flex-grow: 1;
+    background-color: rgba(226, 226, 226, 0.426);
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.426);
+    backdrop-filter: blur(10px);
 }
 
 .game-options {
     display: flex;
+    align-items: stretch;
+    justify-content: center;
     gap: 1rem;
+}
+
+.option {
+    flex-grow: 1;
+    padding: .5rem 1rem;
+    color: rgba(218, 25, 236, 0.426);
+    border-radius: .5rem;
+    border: none;
+    transition: all ease-in-out .1s;
+    inline-size: 6rem;
+    block-size: 5rem;
+}
+
+.option:hover {
+    box-shadow: 0 0 5px 0 rgb(123, 123, 123);
+}
+
+.option:nth-child(1):hover {
+    transform: scale(1.2) rotate(-15deg);
+
+    &:active {
+        transform: scale(.9);
+        background-color: rgba(217, 232, 255, 0.839);
+        color: white;
+    }
+}
+
+.option:nth-child(2):hover {
+    transform: scale(1.2) translateY(-10px);
+
+    &:active {
+        transform: scale(.9);
+        background-color: rgba(217, 232, 255, 0.839);
+        color: white;
+    }
+}
+
+.option:nth-child(3):hover {
+    transform: scale(1.2) rotate(15deg);
+
+    &:active {
+        transform: scale(.9);
+        background-color: rgba(217, 232, 255, 0.839);
+        color: white;
+    }
 }
