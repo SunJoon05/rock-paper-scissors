@@ -169,3 +169,32 @@ body {
     position: relative;
     justify-content: center;
 }
+
+.result-modal {
+    border: none;
+    border-radius: .4rem;
+}
+
+.modal-scores {
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+}
+
+.close-modal {
+    border-radius: .4rem;
+    padding: .6rem;
+    border: none;
+    font-family: 'Montserrat';
+    background: black;
+    color: white;
+}
+
+.modal-title {
+    margin: 0;
+}
+
+.modal-messsage {
+    margin: 0;
+    padding: .5rem 0;
+}

@@ -139,7 +139,7 @@ function playGame() {
         if (round === 5) {
             let message = winnerGame(first_player.score, second_player.score);
             round = 0;
-            let content = { title: 'Game Winner', message, scores: [first_player.score, second_player.score] };
+            let content = { title: 'Game Information', message, scores: [first_player.score, second_player.score] };
             showDialog(content);
             resetPlayers([first_player, second_player]);
         }
@@ -153,8 +153,6 @@ function showDialog(content) {
     let title = document.querySelector('.modal-title');
 
     let scores_cells = document.querySelectorAll('.score');
-
-    console.log(content.scores);
 
     content.scores.forEach((score, idx) => {
         console.log();
