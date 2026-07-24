@@ -4,6 +4,7 @@ body {
     justify-content: center;
     block-size: 100vh;
     font-family: 'Montserrat';
+    gap: 1rem;
 }
 
 .game-container {
@@ -13,7 +14,7 @@ body {
     padding: .5rem;
     gap: 2rem;
     border-radius: .5rem;
-    background-color: rgb(28, 52, 190);
+    background-color: #1E293B;
     inline-size: 20rem;
     block-size: 20rem;
 }
@@ -21,7 +22,7 @@ body {
 .display {
     display: flex;
     gap: .5rem;
-    background: white;
+    background: #F8FAFC;
     padding: .5rem;
     border-radius: .6rem;
     flex-grow: 1;
@@ -34,6 +35,7 @@ body {
     padding: 1rem;
     border-radius: .5rem;
     flex-grow: 1;
+    border: 1px solid gray;
 }
 
 .text {
@@ -66,38 +68,104 @@ body {
     transition: all ease-in-out .1s;
     inline-size: 6rem;
     block-size: 5rem;
+    border: 1px solid gray;
 }
 
 .option:hover {
     box-shadow: 0 0 5px 0 rgb(123, 123, 123);
 }
 
-.option:nth-child(1):hover {
-    transform: scale(1.2) rotate(-15deg);
+.option:nth-child(1) {
+    color: #EF4444;
 
-    &:active {
-        transform: scale(.9);
-        background-color: rgba(217, 232, 255, 0.839);
-        color: white;
+    &:hover {
+        transform: scale(1.2) rotate(-15deg);
+
+        &:active {
+            transform: scale(.9);
+            background-color: rgba(217, 232, 255, 0.839);
+            color: white;
+        }
     }
 }
 
-.option:nth-child(2):hover {
-    transform: scale(1.2) translateY(-10px);
+.option:nth-child(2) {
+    color: #10B981;
 
-    &:active {
-        transform: scale(.9);
-        background-color: rgba(217, 232, 255, 0.839);
-        color: white;
+    &:hover {
+        transform: scale(1.2) translateY(-10px);
+
+        &:active {
+            transform: scale(.9);
+            background-color: rgba(217, 232, 255, 0.839);
+            color: white;
+        }
     }
 }
 
-.option:nth-child(3):hover {
-    transform: scale(1.2) rotate(15deg);
+.option:nth-child(3) {
+    color: #3B82F6;
 
-    &:active {
-        transform: scale(.9);
-        background-color: rgba(217, 232, 255, 0.839);
-        color: white;
+    &:hover {
+        transform: scale(1.2) rotate(15deg);
+
+        &:active {
+            transform: scale(.9);
+            background-color: rgba(217, 232, 255, 0.839);
+            color: white;
+        }
     }
+}
+
+.container-icons-round {
+    display: flex;
+    align-items: center;
+    color: black;
+    backdrop-filter: blur(2px);
+    border-radius: .5rem .5rem 0 0;
+    padding: .5rem 1rem;
+    position: absolute;
+    bottom: 100%;
+    gap: .2rem;
+    left: 50%;
+    transform: translate(-50%);
+    animation: slide .25s ease-in-out;
+    box-shadow: 0 0 5px 0 rgba(123, 123, 123, .2);
+}
+
+.player_state_cell {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.state_cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon_cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes slide {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.main-container {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    justify-content: center;
 }
